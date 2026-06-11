@@ -53,7 +53,6 @@ public class LandMarkerDynmap implements LandMarker {
         // No other map software (BlueMap, Squaremap and Pl3xMap) has this restriction.
         // We already escape the whole value that comes from placeholders inside our HTML text processor.
         String clickDescription = MapAPI.replaceSelector(settings.getClickDescription(), ServiceDynmap.LEAFLET_POPUP_PANES);
-
         if (AreaMarker_setDescription != null) {
             try {
                 // Can't invokeExact because we don't have access to AreaMarkerImpl

@@ -22,9 +22,9 @@ class Vector2(override val x: Double, override val z: Double) : Point2D {
         return ((bits.toInt()) xor ((bits shr 32).toInt()))
     }
 
-    override fun equals(obj: Any?): Boolean {
-        val other = obj as? Point2D ?: return false
-        return this.x == other.x && this.z == other.z
+    override fun equals(other: Any?): Boolean {
+        val otherCast = other as? Point2D ?: return false
+        return this.x == otherCast.x && this.z == otherCast.z
     }
 
     override fun toString(): String = "Vector2($x, $z)"
@@ -66,9 +66,9 @@ class BlockVector2(override val x: Int, override val z: Int) : BlockPoint2D, Dat
         return (z shl 16) xor x
     }
 
-    override fun equals(obj: Any?): Boolean {
-        val other = obj as? BlockPoint2D ?: return false
-        return this.x == other.x && this.z == other.z
+    override fun equals(other: Any?): Boolean {
+        val otherCast = other as? BlockPoint2D ?: return false
+        return this.x == otherCast.x && this.z == otherCast.z
     }
 
     override fun toString(): String {

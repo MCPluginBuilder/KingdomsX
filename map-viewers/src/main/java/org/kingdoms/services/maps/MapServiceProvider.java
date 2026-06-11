@@ -49,7 +49,7 @@ public final class MapServiceProvider {
         iconRegistry.copyDefaults(true);
     }
 
-    protected void load(Plugin plugin) {
+    void load(Plugin plugin) {
         if (MapsConfig.ICONS_ENABLED.getManager().getBoolean()) loadIcons();
         ServiceMap.fullRender(Collections.singleton(this));
     }
@@ -63,7 +63,7 @@ public final class MapServiceProvider {
         landManagers.values().forEach(MapLandManager::clearAreasAndDeleteMarkers);
     }
 
-    protected void removeLands(MarkerType markerType) {
+    void removeLands(MarkerType markerType) {
         MapLandManager polyFinder = this.landManagers.get(markerType);
         if (polyFinder != null) polyFinder.clearAreasAndDeleteMarkers();
     }
@@ -83,7 +83,7 @@ public final class MapServiceProvider {
         return super.toString() + '(' + api.toString() + ')';
     }
 
-    protected void sendGlobalMessage(Player player, String message) {
+    void sendGlobalMessage(Player player, String message) {
         api.sendMessage(player, message);
     }
 
@@ -91,17 +91,17 @@ public final class MapServiceProvider {
         return landManagers.computeIfAbsent(markerType, k -> new MapLandManager(markerType, api));
     }
 
-    protected void updateLands(MarkerType markerType, Group group,
-                               Map<String, ? extends Collection<SimpleChunkLocation>> lands,
-                               LandMarkerSettings settings) {
+    void updateLands(MarkerType markerType, Group group,
+                     Map<String, ? extends Collection<SimpleChunkLocation>> lands,
+                     LandMarkerSettings settings) {
         MapLandManager polyFinder = getLandManager(markerType);
         polyFinder.removeAreasOf(group);
         polyFinder.createAreasFromWorlds(group, lands, settings, "");
     }
 
-    protected void addLands(MarkerType markerType, Group group,
-                            Map<String, ? extends Collection<SimpleChunkLocation>> lands,
-                            LandMarkerSettings settings, String idSuffix) {
+    void addLands(MarkerType markerType, Group group,
+                  Map<String, ? extends Collection<SimpleChunkLocation>> lands,
+                  LandMarkerSettings settings, String idSuffix) {
         MapLandManager polyFinder = getLandManager(markerType);
         polyFinder.createAreasFromWorlds(group, lands, settings, idSuffix);
     }
@@ -117,7 +117,7 @@ public final class MapServiceProvider {
         );
     }
 
-    protected void addIconsOf(MarkerType markerType, @NotNull Land land) {
+    void addIconsOf(MarkerType markerType, @NotNull Land land) {
         Objects.requireNonNull(land, "land is null");
         Kingdom kingdom = land.getKingdom();
         if (kingdom == null) return;
@@ -148,16 +148,16 @@ public final class MapServiceProvider {
 
     @Nullable
     private IconMarker updateIcon(MarkerType markerType, @NotNull SimpleLocation location,
-                                  @NotNull String iconName,
-                                  @Nullable MessagePlaceholderProvider context) {
+                                  @NotNull String iconName) {
         String id = iconIdOf(location);
-        LandMarkerSettings iconSettings = getIconSettings(iconName, context);
+        LandMarkerSettings iconSettings = getIconSettings(iconName, null);
         if (iconSettings == null) return null;
 
         return updateIcon(markerType, location, iconName, id, iconSettings);
     }
 
-    private static LandMarkerSettings translateIcons(LandMarkerSettings iconSettings, @Nullable MessagePlaceholderProvider context) {
+    private static LandMarkerSettings translateIcons(LandMarkerSettings iconSettings,
+                                                     @Nullable MessagePlaceholderProvider context) {
         if (context != null) {
             String clickDescription = iconSettings.getClickDescription();
             if (!Strings.isNullOrEmpty(clickDescription)) {
@@ -172,8 +172,8 @@ public final class MapServiceProvider {
         return iconSettings;
     }
 
-    protected IconMarker updateIcon(MarkerType markerType, @NotNull SimpleLocation location,
-                                    @NotNull String iconName, String id, LandMarkerSettings settings) {
+    IconMarker updateIcon(MarkerType markerType, @NotNull SimpleLocation location,
+                          @NotNull String iconName, String id, LandMarkerSettings settings) {
         Object iconKey = iconRegistry.getIcons().get(iconName);
         if (iconKey == null) return null;
 
@@ -186,7 +186,7 @@ public final class MapServiceProvider {
         return icon;
     }
 
-    protected static @NotNull String iconIdOf(SimpleLocation location) {
+    static @NotNull String iconIdOf(SimpleLocation location) {
         return Integer.toString(location.hashCode());
     }
 
@@ -220,10 +220,10 @@ public final class MapServiceProvider {
     }
 
     void updateHomeIcon(MarkerType markerType, @NotNull SimpleLocation home, boolean national) {
-        updateIcon(markerType, home, national ? "national-spawn" : "home", null);
+        updateIcon(markerType, home, national ? "national-spawn" : "home");
     }
 
-    protected void removeIcon(MarkerType type, String id, SimpleLocation location) {
+    void removeIcon(MarkerType type, String id, SimpleLocation location) {
         api.removeIconMarker(type, id, center(location));
     }
 
@@ -240,7 +240,7 @@ public final class MapServiceProvider {
     public void invasionStart(MarkerType markerType, World world, Kingdom defender, Invasion invasion, Collection<SimpleChunkLocation> chunks, LandMarkerSettings settings) {
         getLandManager(MarkerType.KINGDOMS).createAreas(BukkitAdapter.adapt(world), defender, invasion, chunks, settings, "");
         Location centroid = ChunkConnections.getCentroid(invasion.getAffectedLands());
-        IconMarker icon = updateIcon(markerType, SimpleLocation.of(centroid), "invasion", null);
+        IconMarker icon = updateIcon(markerType, SimpleLocation.of(centroid), "invasion");
         if (icon != null) invasion.getMetadata().put(INVASION_ICON_ID, icon);
     }
 }

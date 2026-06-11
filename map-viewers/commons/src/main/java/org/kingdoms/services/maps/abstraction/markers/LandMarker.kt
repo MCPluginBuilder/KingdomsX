@@ -11,7 +11,7 @@ interface Marker {
 }
 
 class MarkerZoom private constructor(val min: Number?, val max: Number?) {
-    fun percentify(minValue: Number, maxValue: Number): MarkerZoom {
+    fun percentToValue(minValue: Number, maxValue: Number): MarkerZoom {
         return of(
             if (min === null || min.toDouble() <= 0) min else valueFromPercent(
                 minValue.toDouble(),

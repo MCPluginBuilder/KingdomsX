@@ -79,7 +79,7 @@ class ExpirableMap<K : Any, V : Any> : Cache<K, V> {
     }
 
     override fun getAllPresent(keys: MutableIterable<*>): MutableMap<K, V> {
-        return cache.getAllPresent(keys)?.asSequence()!!.associateTo(hashMapOf()) { it.key to it.value.reference }
+        return cache.getAllPresent(keys).asSequence().associateTo(hashMapOf()) { it.key to it.value.reference }
     }
 
     override fun getAll(

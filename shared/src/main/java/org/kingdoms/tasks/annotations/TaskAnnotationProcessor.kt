@@ -53,7 +53,7 @@ class TaskAnnotationProcessor<C : TaskContext> @JvmOverloads constructor(
         container.getAnnotation(AcceptedTaskStates::class.java)?.let {
             taskStatesInclude = it.include
             taskStates = QuickEnumSet(TaskState.values())
-            taskStates!!.addAll(it.states)
+            taskStates.addAll(it.states)
         }
 
         val implicitReturnState: TaskState =

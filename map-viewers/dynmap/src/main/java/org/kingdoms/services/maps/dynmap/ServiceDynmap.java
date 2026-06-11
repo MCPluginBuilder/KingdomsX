@@ -5,7 +5,7 @@ import org.bukkit.entity.Player;
 import org.dynmap.DynmapCommonAPI;
 import org.dynmap.DynmapCommonAPIListener;
 import org.dynmap.markers.*;
-import org.kingdoms.main.KLogger;
+import org.jetbrains.annotations.Nullable;
 import org.kingdoms.main.Kingdoms;
 import org.kingdoms.server.location.Vector2;
 import org.kingdoms.server.location.Vector3Location;
@@ -23,7 +23,6 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.ref.WeakReference;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.nio.file.Files;
@@ -33,11 +32,10 @@ import java.util.*;
 import java.util.logging.Logger;
 
 public final class ServiceDynmap implements MapAPI {
-    protected static final String LEAFLET_POPUP_PANES = ".leaflet-popup-content-wrapper";
-    protected DynmapCommonAPI api;
+    static final String LEAFLET_POPUP_PANES = ".leaflet-popup-content-wrapper";
+    private DynmapCommonAPI api;
     private static final Map<MarkerType, MarkerSet> MARKERS = new IdentityHashMap<>();
     private final Logger logger;
-
 
     public ServiceDynmap(Logger logger) {
         this.logger = logger;
@@ -62,6 +60,7 @@ public final class ServiceDynmap implements MapAPI {
         });
     }
 
+    @Nullable
     MarkerSet getMarkerSet(MarkerType markerType) {
         // When MARKER is null it means the server just started.
         MarkerSet marker = MARKERS.get(markerType);
@@ -88,13 +87,15 @@ public final class ServiceDynmap implements MapAPI {
         // set.setLabelShow(true); ???
         set.setLayerPriority(markerType.getMarkerSettings().priority);
         set.setHideByDefault(markerType.getMarkerSettings().hideByDefault);
-        MARKERS.put(markerType,set);
+        MARKERS.put(markerType, set);
         return set;
     }
 
     @Override
     public Optional<LandMarker> getLandMarker(MarkerType markerType, String id, World world) {
-        AreaMarker marker = getMarkerSet(markerType).findAreaMarker(id);
+        MarkerSet markerSet = getMarkerSet(markerType);
+        if (markerSet == null) return Optional.empty();
+        AreaMarker marker = markerSet.findAreaMarker(id);
         if (marker == null) return Optional.empty();
         return Optional.of(new LandMarkerDynmap(marker));
     }
@@ -104,7 +105,7 @@ public final class ServiceDynmap implements MapAPI {
         return translateZoom0(min, max);
     }
 
-    protected static MarkerZoom translateZoom0(int min, int max) {
+    static MarkerZoom translateZoom0(int min, int max) {
         // -1 for no limit
         if (min < 0) min = -1;
         if (max < 0) max = -1;
@@ -124,6 +125,8 @@ public final class ServiceDynmap implements MapAPI {
     @Override
     public List<LandMarker> createLandMarkers(MarkerType markerType, String id, String label, World world, List<Polygon> polygons, LandMarkerSettings settings) {
         MarkerSet markerSet = getMarkerSet(markerType);
+        if (markerSet == null) return Collections.emptyList();
+
         // Dynmap has no concept of multi-polygon markers, only single polygon markers.
         // To simulate a multi-polygon marker, just create multiple polygon markers.
 
@@ -182,7 +185,10 @@ public final class ServiceDynmap implements MapAPI {
 
     @Override
     public void removeIconMarker(MarkerType markerType, String id, Vector3Location location) {
-        Marker icon = getMarkerSet(markerType).findMarker(id);
+        MarkerSet markerSet = getMarkerSet(markerType);
+        if (markerSet == null) return;
+
+        Marker icon = markerSet.findMarker(id);
         if (icon != null) icon.deleteMarker();
     }
 
@@ -201,11 +207,11 @@ public final class ServiceDynmap implements MapAPI {
             dataFolder = (File) getDataFolder.invoke(api);
         } catch (ClassNotFoundException | NoSuchMethodException |
                  IllegalAccessException | InvocationTargetException e) {
-            Path imgsFolder = Kingdoms.getFolder().getParent().resolve("dynmap").resolve("images");
-            if (!Files.exists(imgsFolder)) {
-                throw new IllegalStateException("Cannot find Dynmap's images folder: " + imgsFolder, e);
+            Path imagesFolder = Kingdoms.getFolder().getParent().resolve("dynmap").resolve("images");
+            if (!Files.exists(imagesFolder)) {
+                throw new IllegalStateException("Cannot find Dynmap's images folder: " + imagesFolder, e);
             } else {
-                dataFolder = imgsFolder.toFile();
+                dataFolder = imagesFolder.toFile();
             }
         }
 
@@ -221,6 +227,8 @@ public final class ServiceDynmap implements MapAPI {
     @Override
     public IconMarker updateOrAddIcon(MarkerType markerType, String id, LandMarkerSettings settings, Vector3Location location, Object icon) {
         MarkerSet markerSet = getMarkerSet(markerType);
+        if (markerSet == null) throw new IllegalStateException("Dynmap didn't start correctly.");
+
         Marker marker = markerSet.findMarker(id);
         String world = location.getWorld().getName();
 
