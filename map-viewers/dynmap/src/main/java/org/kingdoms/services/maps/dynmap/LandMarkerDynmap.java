@@ -1,6 +1,8 @@
 package org.kingdoms.services.maps.dynmap;
 
+import com.cryptomorin.xseries.reflection.ReflectiveNamespace;
 import com.cryptomorin.xseries.reflection.XReflection;
+import com.cryptomorin.xseries.reflection.jvm.classes.DynamicClassHandle;
 import org.dynmap.markers.AreaMarker;
 import org.jetbrains.annotations.NotNull;
 import org.kingdoms.main.KLogger;
@@ -11,15 +13,57 @@ import org.kingdoms.services.maps.abstraction.markers.MarkerZoom;
 import org.kingdoms.utils.ColorUtils;
 
 import java.lang.invoke.MethodHandle;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class LandMarkerDynmap implements LandMarker {
     private final AreaMarker marker;
-    private final MethodHandle AreaMarker_setDescription = XReflection.classHandle()
-            .inPackage("org.dynmap.markers.impl")
-            .named("AreaMarkerImpl")
-            .field("private String desc").setter()
-            .reflectOrNull();
+    private static final MethodHandle
+            AreaMarker_setDescription,
+            MarkerAPIImpl_areaMarkerUpdated,
+            MarkerAPIImpl_saveMarkers;
+    private static final Object MarkerAPIImpl$MarkerUpdate_UPDATED;
+
+    static {
+        ReflectiveNamespace ns = XReflection.namespaced();
+
+        AreaMarker_setDescription = ns
+                .classHandle("package org.dynmap.markers.impl;" +
+                        "class AreaMarkerImpl implements AreaMarker, EnterExitMarker")
+                .field("private String desc").setter()
+                .reflectOrNull();
+
+
+        DynamicClassHandle MarkerAPIImpl = ns
+                .classHandle("package org.dynmap.markers.impl;" +
+                        "public class MarkerAPIImpl implements MarkerAPI");
+
+        // enum MarkerUpdate { CREATED, UPDATED, DELETED };
+        DynamicClassHandle enumMarkerUpdate = MarkerAPIImpl
+                .inner("enum MarkerUpdate");
+        MarkerAPIImpl$MarkerUpdate_UPDATED = enumMarkerUpdate
+                .field().getter().returns(enumMarkerUpdate).makeAccessible().named("UPDATED").getStatic();
+
+        MarkerAPIImpl_areaMarkerUpdated = MarkerAPIImpl
+                .method("static void areaMarkerUpdated(AreaMarkerImpl marker, MarkerUpdate update)")
+                .reflectOrNull();
+
+        MarkerAPIImpl_saveMarkers = MarkerAPIImpl
+                .method("static void saveMarkers()")
+                .reflectOrNull();
+
+        Map<String, Object> hacks = new HashMap<>();
+        hacks.put("AreaMarker_setDescription", AreaMarker_setDescription);
+        hacks.put("MarkerAPIImpl_areaMarkerUpdated", MarkerAPIImpl_areaMarkerUpdated);
+        hacks.put("MarkerAPIImpl$MarkerUpdate_UPDATED", MarkerAPIImpl$MarkerUpdate_UPDATED);
+        hacks.put("MarkerAPIImpl_saveMarkers", MarkerAPIImpl_saveMarkers);
+
+        if (hacks.values().stream().anyMatch(Objects::isNull)) {
+            KLogger.warn("Your current Dynmap version doesn't support one of the HTML hacks:");
+            hacks.forEach((k, v) -> KLogger.warn("  - " + k));
+        }
+    }
 
     public LandMarkerDynmap(AreaMarker marker) {
         this.marker = Objects.requireNonNull(marker);
@@ -52,11 +96,30 @@ public class LandMarkerDynmap implements LandMarker {
         // https://github.com/webbukkit/dynmap/blob/003cad5dc280b68eb675dc7683a87b0ee7b48b58/DynmapCore/src/main/java/org/dynmap/markers/impl/AreaMarkerImpl.java#L296-L305
         // No other map software (BlueMap, Squaremap and Pl3xMap) has this restriction.
         // We already escape the whole value that comes from placeholders inside our HTML text processor.
+
+        //     @Override
+        //     public void setDescription(String desc) {
+        //         if(markerset == null) return;
+        //         desc = Client.sanitizeHTML(desc);
+        //         if((this.desc == null) || (this.desc.equals(desc) == false)) {
+        //             this.desc = desc;
+        //             MarkerAPIImpl.areaMarkerUpdated(this, MarkerUpdate.UPDATED);
+        //             if(ispersistent)
+        //                 MarkerAPIImpl.saveMarkers();
+        //         }
+        //     }
         String clickDescription = MapAPI.replaceSelector(settings.getClickDescription(), ServiceDynmap.LEAFLET_POPUP_PANES);
         if (AreaMarker_setDescription != null) {
             try {
                 // Can't invokeExact because we don't have access to AreaMarkerImpl
                 AreaMarker_setDescription.invoke(marker, clickDescription);
+
+                // MarkerAPIImpl.areaMarkerUpdated(this, MarkerUpdate.UPDATED);
+                if (MarkerAPIImpl_areaMarkerUpdated != null && MarkerAPIImpl$MarkerUpdate_UPDATED != null)
+                    MarkerAPIImpl_areaMarkerUpdated.invoke(marker, MarkerAPIImpl$MarkerUpdate_UPDATED);
+
+                if (MarkerAPIImpl_saveMarkers != null && marker.isPersistentMarker())
+                    MarkerAPIImpl_saveMarkers.invokeExact();
             } catch (Throwable e) {
                 if (KLogger.isDebugging()) e.printStackTrace();
                 else KLogger.warn("Failed to set Dynmap's unsafe description: " + e.getMessage());

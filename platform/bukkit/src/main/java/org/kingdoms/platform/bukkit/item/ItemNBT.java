@@ -18,7 +18,7 @@ import static com.cryptomorin.xseries.reflection.XReflection.ofMinecraft;
 import static com.cryptomorin.xseries.reflection.XReflection.supports;
 
 public final class ItemNBT {
-    public static final boolean CAN_ACCESS_UNBREAKABLE = supports(11), SUPPORTS_COMPONENTS;
+    public static final boolean CAN_ACCESS_UNBREAKABLE = supports(1, 11), SUPPORTS_COMPONENTS;
     public static final MethodHandle AS_NMS_COPY;
     public static final MethodHandle AS_BUKKIT_COPY;
     public static final MethodHandle SET_TAG, CUSTOM_DATA_CTOR;
@@ -89,7 +89,7 @@ public final class ItemNBT {
              */
             copyTag = XReflection.of(CustomDataClass).method()
                     .map(MinecraftMapping.MOJANG, "copyTag")
-                    .map(MinecraftMapping.OBFUSCATED, XReflection.v(21, 9, "b").v(21, 4, "d").orElse("c"))
+                    .map(MinecraftMapping.OBFUSCATED, XReflection.v(1, 21, 9, "b").v(1, 21, 4, "d").orElse("c"))
                     .returns(CompoundTagClass)
                     .reflect();
 
@@ -113,10 +113,10 @@ public final class ItemNBT {
         } catch (Throwable ex) {
             try {
                 setTag = lookup.findVirtual(nmsItemStack,
-                        XReflection.v(18, "c").orElse("setTag"), MethodType.methodType(void.class, CompoundTagClass));
+                        XReflection.v(1, 18, "c").orElse("setTag"), MethodType.methodType(void.class, CompoundTagClass));
 
                 getTag = lookup.findVirtual(nmsItemStack,
-                        XReflection.v(19, "v").v(18, "t").orElse("getTag"), MethodType.methodType(CompoundTagClass));
+                        XReflection.v(1, 19, "v").v(1, 18, "t").orElse("getTag"), MethodType.methodType(CompoundTagClass));
             } catch (NoSuchMethodException | IllegalAccessException ex2) {
                 RuntimeException newEx = new RuntimeException(ex2);
                 newEx.addSuppressed(ex);
@@ -248,7 +248,7 @@ public final class ItemNBT {
     // }
 
 //    protected static ItemStack setAttributes(ItemStack item, boolean unbreakable) {
-//        if (XReflection.supports(9)) {
+//        if (XReflection.supports(1, 9)) {
 //            ItemMeta meta = item.getItemMeta();
 //            meta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, new AttributeModifier("34", 343, AttributeModifier.Operation.ADD_NUMBER));
 //            item.setItemMeta(meta);

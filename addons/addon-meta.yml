@@ -2,7 +2,9 @@ repositories:
   kingdoms-gh:
     url: 'https://github.com/CryptoMorin/KingdomsX/blob/<commit>/addons/<name>-<version>.jar?raw=true'
     versions:
-      1.17.27: master
+      1.17.27.2: master
+      1.17.27.1.1: 18e4bd8a16c6c805109f8d0ccd94c9b932ee3099
+      1.17.27: 18e4bd8a16c6c805109f8d0ccd94c9b932ee3099
       1.17.26: 4cd8681f0c2af927fe4db08c527c5f893f482e18
       1.17.25.1-BETA: f44b447868a6095fa2cbf22fa5eb97b5044df803
       1.17.24-BETA: a42cdff6cffffa071ab4d89fef6e83ac3f620859
@@ -36,7 +38,8 @@ outposts:
   name: 'Kingdoms-Addon-Outposts'
   dependencies: [enginehub]
   versions:
-    '1.17.27 <=': 3.1.2.3
+    '1.17.27.2 <=': 3.1.2.4
+    '1.17.27 ... 1.17.27.2': 3.1.2.3
     '1.17.20-BETA ... 1.17.27': 3.1.2.2
     '1.17.18-BETA ... 1.17.20-BETA': 3.1.2
     '1.17.12-BETA ... 1.17.18-BETA': 3.1.1

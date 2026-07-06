@@ -24,6 +24,10 @@ public final class ExpirableObject<T> implements CacheableObject<T> {
         return System.currentTimeMillis() - lastUpdateMillis;
     }
 
+    public Duration expiresIn() {
+        return Duration.ofMillis(expirationDuration.toMillis() - getPassedMillis());
+    }
+
     @Override
     public boolean isCached() {
         return !hasExpired();

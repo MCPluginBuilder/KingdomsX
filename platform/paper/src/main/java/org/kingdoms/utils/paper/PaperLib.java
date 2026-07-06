@@ -4,12 +4,13 @@ import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.TestOnly;
 import org.kingdoms.utils.paper.asyncchunks.AsyncChunks;
 
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public final class PaperLib {
     private static AsyncChunks asyncChunks;
 
-    public static void init(Function<Integer, Boolean> versionChecker) {
+    public static void init(BiFunction<Integer, Integer, Boolean> versionChecker) {
         asyncChunks = AsyncChunks.generateInstance(versionChecker);
     }
 

@@ -76,13 +76,13 @@ public final class BukkitNBTAdapter {
             try {
                 Field field = XReflection.of(nbtCompound)
                         .field("private final Map<String, Tag> tags") // Map<String, Tag>
-                        .map(MinecraftMapping.MOJANG, XReflection.v(21, 9, "tags").orElse("map"))
+                        .map(MinecraftMapping.MOJANG, XReflection.v(1, 21, 9, "tags").orElse("map"))
                         .map(MinecraftMapping.OBFUSCATED, "x")
                         .reflectJvm();
                 field.setAccessible(true);
                 getMap = lookup.unreflectGetter(field);
 
-                if (XReflection.supports(15)) {
+                if (XReflection.supports(1, 15)) {
                     Constructor<?> ctor = nbtCompound.getDeclaredConstructor(Map.class);
                     ctor.setAccessible(true);
                     handler = lookup.unreflectConstructor(ctor);
@@ -141,7 +141,7 @@ public final class BukkitNBTAdapter {
                 }
 
                 Object compound;
-                if (XReflection.supports(15)) compound = NBT_TAG_COMPOUND_CONSTRUCTOR.invoke(map);
+                if (XReflection.supports(1, 15)) compound = NBT_TAG_COMPOUND_CONSTRUCTOR.invoke(map);
                 else {
                     compound = NBT_TAG_COMPOUND_CONSTRUCTOR.invoke();
                     SET_COMPOUND_MAP.invoke(compound, map);
@@ -170,7 +170,7 @@ public final class BukkitNBTAdapter {
                             .returns(clazz)
                             .get(null);
                 } catch (Throwable e) {
-                    if (XReflection.supports(13)) e.printStackTrace();
+                    if (XReflection.supports(1, 13)) e.printStackTrace();
                 }
             }
 
@@ -252,7 +252,7 @@ public final class BukkitNBTAdapter {
                         .reflect();
             }
 
-            if (XReflection.supports(15)) {
+            if (XReflection.supports(1, 15)) {
                 constructor = XReflection.of(clazz)
                         .method().asStatic()
                         .map(MinecraftMapping.MOJANG, "valueOf")
@@ -297,7 +297,7 @@ public final class BukkitNBTAdapter {
                             .named("c", /* 1.16.5 */ "b")
                             .unreflect();
                 } catch (NoSuchMethodException | IllegalAccessException ex) {
-                    if (XReflection.supports(13)) ex.printStackTrace();
+                    if (XReflection.supports(1, 13)) ex.printStackTrace();
                 }
             }
 
@@ -402,7 +402,7 @@ public final class BukkitNBTAdapter {
                 if (XReflection.supports(1, 21, 5)) {
                     handler = XReflection.of(clazz).constructor(List.class).makeAccessible().reflect();
                     isTypeDynamic = true;
-                } else if (XReflection.supports(15)) {
+                } else if (XReflection.supports(1, 15)) {
                     handler = XReflection.of(clazz).constructor(List.class, byte.class).makeAccessible().reflect();
                 } else {
                     handler = XReflection.of(clazz).constructor().makeAccessible().reflect();
@@ -422,7 +422,7 @@ public final class BukkitNBTAdapter {
                     // getTypeId = XReflection.of(clazz).method()
                     //         .returns(byte.class)
                     //         .map(MinecraftMapping.MOJANG, "getElementType")
-                    //         .map(MinecraftMapping.OBFUSCATED, XReflection.v(19, "f").v(17, "e").v(16, "d_").v(14, "a_").orElse("getElementType"))
+                    //         .map(MinecraftMapping.OBFUSCATED, XReflection.v(1, 19, "f").v(1, 17, "e").v(1, 16, "d_").v(1, 14, "a_").orElse("getElementType"))
                     //         .reflect();
 
                     // We want the byte type id of the NBT tag for older versions so we can get the first element in the list
@@ -431,7 +431,7 @@ public final class BukkitNBTAdapter {
                             .returns(byte.class)
                             .map(MinecraftMapping.MOJANG, "getId") // From v1.14+
                             .map(MinecraftMapping.SPIGOT, "getTypeId") // Stopped since v1.18
-                            .map(MinecraftMapping.OBFUSCATED, XReflection.v(19, 3, "b").orElse("a"))
+                            .map(MinecraftMapping.OBFUSCATED, XReflection.v(1, 19, 3, "b").orElse("a"))
                             .reflect();
                 }
             } catch (ReflectiveOperationException e) {
@@ -492,7 +492,7 @@ public final class BukkitNBTAdapter {
                 // ignore the list completely and return an empty list.
                 if (XReflection.supports(1, 21, 5)) {
                     return ListTag_init.invoke(array);
-                } else if (XReflection.supports(15)) {
+                } else if (XReflection.supports(1, 15)) {
                     return ListTag_init.invoke(array, safeListType(array, tag));
                 } else {
                     Object nbtList = ListTag_init.invoke();

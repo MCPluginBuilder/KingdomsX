@@ -332,7 +332,7 @@ class ItemEditor(
             openGUI()
         }.done()
         gui.option("custom-model-data").onNormalClicks { ctx ->
-            if (!XReflection.supports(14)) {
+            if (!XReflection.supports(1, 14)) {
                 ctx.sendError(AdminToolsLang.ITEM_EDITOR_CUSTOM_MODEL_DATA_NOT_SUPPORTED)
                 return@onNormalClicks
             }
@@ -642,7 +642,7 @@ class ItemEditor(
         operation: Operation, slot: EquipmentSlot?
     ): AttributeModifier {
         return XAttribute.createModifier(name, amount, operation, slot)
-        // return if (XReflection.supports(18)) {
+        // return if (XReflection.supports(1, 18)) {
         //     AttributeModifier(
         //         previous?.key ?: NamespacedKey(Kingdoms.get(), name),
         //         amount, operation, slot?.group ?: EquipmentSlotGroup.ANY

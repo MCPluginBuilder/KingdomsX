@@ -26,7 +26,7 @@ public final class CommandAdminDynmap extends KingdomsCommand {
             return context.fail(MapViewersLang.COMMAND_ADMIN_DYNMAP_NOT_AVAILABLE);
         }
 
-        // TODO fix thess
+        // TODO fix these
         CommandSender sender = context.getMessageReceiver();
         String option = context.arg(0).toLowerCase(Locale.ENGLISH);
 

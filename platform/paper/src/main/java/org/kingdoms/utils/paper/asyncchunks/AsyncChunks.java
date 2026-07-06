@@ -4,15 +4,16 @@ import org.bukkit.Chunk;
 import org.bukkit.World;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public abstract class AsyncChunks {
-    public static AsyncChunks generateInstance(Function<Integer, Boolean> versionChecker) {
-        if (versionChecker.apply(15)) {
+    public static AsyncChunks generateInstance(BiFunction<Integer, Integer, Boolean> versionChecker) {
+        if (versionChecker.apply(1, 15)) {
             return new AsyncChunksPaper_15();
-        } else if (versionChecker.apply(13)) {
+        } else if (versionChecker.apply(1, 13)) {
             return new AsyncChunksPaper_13();
-        } else if (versionChecker.apply(9) && !versionChecker.apply(13)) {
+        } else if (versionChecker.apply(1, 9) && !versionChecker.apply(1, 13)) {
             return new AsyncChunksPaper_9_12();
         } else {
             // noinspection StaticInitializerReferencesSubClass

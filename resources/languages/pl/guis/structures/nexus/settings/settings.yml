@@ -1,4 +1,4 @@
-title: "{$sep}-=( &7Ustawienia {$sep})=-"
+title: "{$sep}-=( {$sep}Ustawienia {$sep})=-"
 rows: 6
 sound: ITEM_BOOK_PAGE_TURN
 
@@ -7,45 +7,160 @@ options:
     posx: 1
     posy: 1
     material: PLAYER_HEAD
-    name: '&2Powrót'
-    lore: [ '&6Wróć do menu Nexus.' ]
+    name: '{$p}Powrót'
+    lore: [ '{$s}Wróć do menu Nexusa.' ]
     skull: "{$gui-back}"
   light-blue-stained-glass-pane:
-    slots: [ 1, 2, 6, 7, 8, 9, 17, 18, 21, 23, 26, 27, 29, 30, 31, 32, 33, 35, 36, 39, 41, 44, 45, 53 ]
+    slots: [ 1, 2, 6, 7, 8, 9, 17, 18, 21, 23, 26, 27, 29, 30, 32, 33, 35, 36, 39, 41, 44, 45, 53 ]
     material: LIGHT_BLUE_STAINED_GLASS_PANE
     name: ''
+  upgrade:
+    posx: 5
+    posy: 4
+    material: NETHER_STAR
+    upgrade:
+      condition: "level < max_level"
+      name: "{$sp}Ulepsz{$colon} {$s}%roman@level% {$arrow} {$s}%roman@next_level%"
+      material: NETHER_STAR
+      lvl-I:
+        condition: 'level == 1'
+        lore: |
+          {$dot} {$p}&lRóżne Ulepszenia{$colon}
+            {$sdot} {$s}Odblokuj Szaleństwo
+
+          {$dot} {$p}&lWzmocnienia{$colon}
+            {$sdot} {$s}Wszystkie Ulepszenia{$colon} {$sp}{$lvlup} Poziom 30
+
+          {$dot} {$p}&lUlepszenia Czempiona{$colon}
+            {$sdot} {$s}Odblokuj Rzut
+            {$sdot} {$s}Odblokuj Limit Obrażeń
+            {$sdot} {$s}Zdrowie{$colon} {$sp}{$lvlup} Poziom 30
+
+          {$dot} {$p}&lWieżyczki{$colon}
+            {$sdot} {$s}Odblokuj Wieżyczkę Leczącą
+            {$sdot} {$s}Odblokuj Wieżyczkę Ognistą
+
+          {$dot} {$p}&lStruktury{$colon}
+            {$sdot} {$s}Odblokuj Powercell
+            {$sdot} {$s}Odblokuj Posterunek
+
+          {$p}Maksymalny Poziom{$colon} {$s}%roman@max_level%
+          {$p}Koszt{$colon} {$s}%fancy@upgrade_cost%
+      lvl-II:
+        condition: 'level == 2'
+        lore: |
+          {$dot} {$p}&lRóżne Ulepszenia{$colon}
+            {$sdot} {$s}Odblokuj Strażników
+            {$sdot} {$s}Odblokuj Chwałę
+            {$sdot} {$s}Odblokuj Zachowanie Ekwipunku
+
+          {$dot} {$p}&lWzmocnienia{$colon}
+            {$sdot} {$s}Wszystkie Ulepszenia{$colon} {$sp}{$lvlup} Poziom 40
+
+          {$dot} {$p}&lUlepszenia Czempiona{$colon}
+            {$sdot} {$s}Odblokuj Przeciągnięcie
+            {$sdot} {$s}Odblokuj Thora
+            {$sdot} {$s}Zdrowie{$colon} {$sp}{$lvlup} Poziom 40
+
+          {$dot} {$p}&lWieżyczki{$colon}
+            {$sdot} {$s}Odblokuj Psioniczną Wieżyczkę
+            {$sdot} {$s}Odblokuj Piekielną Wieżyczkę
+
+          {$dot} {$p}&lStruktury{$colon}
+            {$sdot} {$s}Odblokuj Ekstraktor
+
+          {$p}Maksymalny Poziom{$colon} {$s}%roman@max_level%
+          {$p}Koszt{$colon} {$s}%fancy@upgrade_cost%
+      lvl-III:
+        condition: 'level == 3'
+        lore: |
+          {$dot} {$p}&lRóżne Ulepszenia{$colon}
+            {$sdot} {$s}Odblokuj Strażników Nexusa
+            {$sdot} {$s}Zachowanie Ekwipunku{$colon}: {$sp}{$lvlup} Poziom 2
+
+          {$dot} {$p}&lWzmocnienia{$colon}
+            {$sdot} {$s}Wszystkie Ulepszenia{$colon} {$sp}{$lvlup} Poziom 50
+
+          {$dot} {$p}&lUlepszenia Czempiona{$colon}
+            {$sdot} {$s}Odblokuj Posilki
+
+          {$dot} {$p}&lWieżyczki{$colon}
+            {$sdot} {$s}Odblokuj Wieżyczkę Promieniującą Ciepłem
+            {$sdot} {$s}Odblokuj Wieżyczkę Żołnierza
+
+          {$dot} {$p}&lStruktury{$colon}
+            {$sdot} {$s}Odblokuj Strukturę WarpPad
+            {$sdot} {$s}Odblokuj Strukturę Regulatora
+
+          {$p}Maksymalny Poziom{$colon} {$s}%roman@max_level%
+          {$p}Koszt{$colon} {$s}%fancy@upgrade_cost%
+      lvl-IV:
+        condition: 'level == 4'
+        lore: |
+          {$dot} {$p}&lRóżne Ulepszenia{$colon}
+            {$sdot} {$s}Odblokuj Latanie
+            {$sdot} {$s}Zachowanie Ekwipunku{$colon}: {$sp}{$lvlup} Poziom 3
+
+          {$dot} {$p}&lWzmocnienia{$colon}
+            {$sdot} {$s}Wszystkie Ulepszenia{$colon} {$sp}{$lvlup} Poziom 70
+
+          {$dot} {$p}&lUlepszenia Czempiona{$colon}
+            {$sdot} {$s}Odblokuj Wybuch
+
+          {$dot} {$p}&lWieżyczki{$colon}
+            {$sdot} {$s}Odblokuj Inferno Wieżyczkę
+
+          {$dot} {$p}&lStruktury{$colon}
+            {$sdot} {$s}Odblokuj Oblężniczą Armatę
+
+          {$p}Maksymalny Poziom{$colon} {$s}%roman@max_level%
+          {$p}Koszt{$colon} {$s}%fancy@upgrade_cost%
+      else:
+        lore: [ "&cNieznane Ulepszenie Królestwa: %level%" ]
+    maxxed:
+      name: "{$sp}Poziom Królestwa{$colon} {$s}%roman@level% {$sep}(&5Maksymalny{$sep})"
+      material: NETHER_STAR
   public-home:
     posx: 4
     posy: 1
     material: DARK_OAK_DOOR
-    name: "{$s}Publiczny Dom{$colon} %bool@kingdoms_kingdom_home_is_public%"
+    name: "{$s}Otwarty Dom{$colon} %bool@kingdoms_kingdom_home_is_public%"
     lore: |
-      &7Gdy twój dom jest publiczny, każdy
-      może teleportować się do niego używając
+      {$sep}Gdy twój dom jest otwarty, każdy
+      może się do niego teleportować używając
       {$p}/k home %kingdoms_kingdom_name%
+
+      {$p}Lewy przycisk myszy{$sep} aby przełączyć.
+      {$p}Prawy przycisk myszy{$sep} aby ustawić koszt.
+      Koszt dotyczy tylko osób spoza
+      twojego królestwa.
+      {$p}Aktualny Podatek Domu{$colon} {$s}%kingdoms_kingdom_taxes_home%
+
+      {$note} Oba królestwa muszą mieć
+      atrybut HOME, aby to działało.
   hidden:
     posx: 5
     posy: 1
     material: POTION
     color: 818595
-    name: "{$s}Ukryty{$colon} %bool@kingdoms_kingdom_is_hidden%"
+    name: "{$s}Ukryte{$colon} %bool@kingdoms_kingdom_is_hidden%"
     lore: |
-      &7Ukryte królestwa nie są wyświetlane
-      na {$p}/k map &7i na mapach online.
+      {$sep}Ukryte królestwa nie są wyświetlane
+      w {$p}/k map {$sep}ani na mapach online.
   tax:
     posx: 6
     posy: 1
     material: PAPER
-    name: '&6Podatki'
+    name: '{$s}Podatek'
     lore: |
-      &7Zmień podatki w swoim królestwie
+      {$sep}Zmień podatki w swoim królestwie
       dla członków.
 
-      &6Podatek Dla Członków{$colon}
-      &2%tax_equation%
-      &6Twój Osobisty Podatek{$colon} &2$%fancy@kingdoms_tax%
+      {$s}Równanie Podatku{$colon}
+      {$p}%tax_equation%
+      {$s}Twój Podatek{$colon} {$p}$%fancy@kingdoms_tax%
 
-      &6Podatek Królestwa{$colon} &2$%fancy@kingdoms_kingdom_tax%
+      {$s}Podatek Królestwa{$colon} {$p}$%fancy@kingdoms_kingdom_tax%
   blue-stained-glass-pane:
     slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 25, 28, 34, 37, 43, 46, 47, 48, 49, 50, 51, 52 ]
     material: BLUE_STAINED_GLASS_PANE
@@ -54,67 +169,61 @@ options:
     posx: 3
     posy: 3
     material: WRITABLE_BOOK
-    name: '&6Relacje'
+    name: '{$s}Relacje'
     lore: |
-      &7Zmień atrybuty relacji
+      {$sep}Zmień atrybuty relacji
       z innymi królestwami.
 
       {$sep}[&e!{$sep}] {$es}Aby niektóre atrybuty działały,
-      oba królestwa muszą mieć
-      atrybut włączony dla tej relacji.
+      oba królestwa muszą mieć je włączone
+      dla tej relacji.
 
-      Na przykład, jeśli masz atrybut {$e}BUDOWA {$es}
-      włączony dla sojuszników, ale próbujesz
-      budować na terytorium sojusznika, który nie ma
-      atrybutu {$e}BUDOWA {$es} włączonego dla sojuszników,
-      to nie zadziała. Oni też nie będą mogli
-      budować na twoim terytorium.
-  flag:
+      Jeśli masz {$e}BUDOWA{$es} dla sojuszników,
+      ale sojusznik nie ma tego atrybutu,
+      nie będziesz mógł budować.
+  banners:
     posx: 5
     posy: 3
     material: BLACK_BANNER
-    name: '&6Flaga'
+    name: '{$s}Flagi i Bannery'
     lore: |
-      &7Ustaw flagę swojego królestwa na Dynmapie.
-      Kliknij, aby zobaczyć URL twojej flagi.
-      To nie aktualizuje mapy od razu.
+      {$sep}Ustaw flagę i banner królestwa
+      dla map online, ikon i dekoracji.
   pacifism:
     posx: 7
     posy: 3
     material: END_CRYSTAL
-    name: '&6Pacifista{$colon} %bool@kingdoms_kingdom_is_pacifist%'
+    name: '{$s}Pacyfista{$colon} %bool@kingdoms_kingdom_is_pacifist%'
     lore: |
-      &7Gdy jesteś w trybie pacifisty,
-      twoje królestwo nie może najechać
-      ani nie może być najechane przez inne królestwa.
+      {$sep}W trybie pacyfisty twoje królestwo
+      nie może najeżdżać ani być najeżdżane.
 
-      Jeśli najdziesz królestwo, nie będziesz mógł wrócić
-      do trybu pacifisty przez tydzień.
-
-      &2Czas Odnowienia{$colon} &6%pacifism_cooldown%
+      Jeśli dokonasz najazdu, nie możesz wrócić
+      do trybu pacyfisty przez tydzień.
+      {? pacifism_left > 0 ? "
+      {$p}Czas Odnowienia{$colon} {$s}%pacifism_cooldown%" }
   invites:
     posx: 3
     posy: 5
     material: BOOK
-    name: '&6Wymaga Zaproszenia{$colon} %bool@kingdoms_kingdom_requires_invite%'
+    name: '{$s}Wymaga Zaproszenia{$colon} %bool@kingdoms_kingdom_requires_invite%'
     lore: |
-      &7Gdy jest wyłączony, każdy może
-      dołączyć do tego królestwa bez potrzeby
-      zaproszenia za pomocą {$p}/k join %kingdoms_kingdom_name%
+      {$sep}Gdy wyłączone, każdy może
+      dołączyć do królestwa bez zaproszenia
+      używając {$p}/k join %kingdoms_kingdom_name%
   color:
     posx: 5
     posy: 5
     material: LIME_DYE
-    name: '&6Kolor{$colon} &c%r%&7, &2%g%&7, &9%b% &7(%hex@kingdoms_kingdom_color%%kingdoms_kingdom_color%&7)'
+    name: '{$s}Kolor{$colon} &c%r%{$sep}, {$p}%g%{$sep}, {$sp}%b% {$sep}(%hex@kingdoms_kingdom_color%%kingdoms_kingdom_color%{$sep})'
     lore: |
-      &7Ustaw kolor znacznika swojego królestwa
-      na czacie i mapach online terytorium.
+      {$sep}Ustaw kolor znacznika królestwa
+      dla czatu i map online.
   shields:
     posx: 7
     posy: 5
     material: SHIELD
-    name: '&6Tarcza{$colon} &2%time@kingdoms_shield_time_left%'
+    name: '{$s}Tarcza{$colon} {$p}%time@kingdoms_shield_time_left%'
     lore: |
-      &7Kup tarczę dla swojego
-      królestwa, aby chronić je
-      przed najazdami.
+      {$sep}Kup tarczę, aby chronić
+      królestwo przed najazdami.

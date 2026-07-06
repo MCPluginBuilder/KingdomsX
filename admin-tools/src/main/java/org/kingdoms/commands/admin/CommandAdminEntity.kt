@@ -110,7 +110,7 @@ class CommandAdminEntity : KingdomsCommand() {
                 details.add(Pair.of("No Damage Ticks", entity.noDamageTicks))
                 if (entity.isCollidable) flags.add("Collidable")
                 if (entity.isInvisible) flags.add("Invisible")
-                if (XReflection.supports(13) && entity is Zombie) {
+                if (XReflection.supports(1, 13) && entity is Zombie) {
                     val zom = entity
                     if (zom.isConverting) details.add(
                         Pair.of(

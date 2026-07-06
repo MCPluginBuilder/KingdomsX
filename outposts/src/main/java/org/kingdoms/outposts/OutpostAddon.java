@@ -40,7 +40,7 @@ public final class OutpostAddon extends JavaPlugin implements Addon {
     @Override
     public void onLoad() {
         if (!isKingdomsLoaded()) return;
-        Kingdoms.get().getPermissionRegistery().register(OUTPOST_JOIN_PERMISSION);
+        Kingdoms.get().getPermissionRegistry().register(OUTPOST_JOIN_PERMISSION);
         Kingdoms.get().getAuditLogRegistry().register(LogKingdomOutpostJoin.PROVIDER);
         LanguageManager.registerMessenger(OutpostsLang.class);
         ConfigManager.watch(OutpostDataHandler.DATA);
