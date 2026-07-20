@@ -14,6 +14,6 @@ options:
     slot: 1
   done:
     name: "&aKész"
-    lore: "{$sep}Klikk a bevitel befejezéséhez."
+    lore: "{$sep}Kattintás a bevitel befejezéséhez."
     material: BLUE_WOOL
     slot: 2

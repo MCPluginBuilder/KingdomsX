@@ -41,12 +41,12 @@ options:
       
       Ezt a könyvet bárhová el lehet helyezni,
       ahová csak akarod. A levél {$sp}tartalmának
-      szerkesztéséhez {$sep}csak {$p}jobb-klikk {$sep}és
+      szerkesztéséhez {$sep}csak {$p}jobb-kattintás {$sep}és
       írj úgy, ahogy szoktál.
       
       Más tulajdonságok szerkesztéséhez, -mint
       például a {$sp}tárgy {$sep}vagy a {$sp} címzettek{$sep}-,
-      {$p}jobb-klikk lopakodás {$sep}aktiválása közben.
+      {$p}jobb-kattintás lopakodás {$sep}aktiválása közben.
       
       Ha kész vagy, és készen állsz a levél
       {$sp}elküldésére{$sep}, dobd vissza ezt a
@@ -90,4 +90,4 @@ options:
     posx: 5
     posy: 6
     material: BARRIER
-    name: '&Vissza'
+    name: '&cVissza'

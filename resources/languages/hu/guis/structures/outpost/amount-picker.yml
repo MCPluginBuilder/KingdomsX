@@ -29,10 +29,10 @@ options:
         {$e}Minimálisan megadható érték{$colon} {$es}%min%
     else:
       lore: |
-        {$dot} {$p}Bal-klikk{$colon} {$s}-1
-        {$dot} {$p}Jobb-klikk{$colon} {$s}-10
-        {$dot} {$p}Shift Bal-klikk{{$colon} {$s}-30
-        {$dot} {$p}Shift Jobb-klikk{$colon} {$s}a %min% beállítása
+        {$dot} {$p}Bal-kattintás{$colon} {$s}-1
+        {$dot} {$p}Jobb-kattintás{$colon} {$s}-10
+        {$dot} {$p}Shift Bal-kattintás{{$colon} {$s}-30
+        {$dot} {$p}Shift Jobb-kattintás{$colon} {$s}min-re állítás (%min%)
     posx: 2
     posy: 2
     material: PLAYER_HEAD
@@ -50,10 +50,10 @@ options:
         {$e}Maximálisan megadható érték{$colon} {$es}%max%
     else:
       lore: |
-        {$dot} {$p}Bal-klikk{$colon} {$s}+1
-        {$dot} {$p}Jobb-klikk{$colon} {$s}+10
-        {$dot} {$p}Shift Jobb-klikk{$colon} {$s}+30
-        {$dot} {$p}Shift Bal-klikk{$colon} {$s}a %max% beállítása
+        {$dot} {$p}Bal-kattintás{$colon} {$s}+1
+        {$dot} {$p}Jobb-kattintás{$colon} {$s}+10
+        {$dot} {$p}Shift Jobb-kattintás{$colon} {$s}+30
+        {$dot} {$p}Shift Bal-kattintás{$colon} {$s}max-ra állítás (%max%)
     posx: 8
     posy: 2
     material: PLAYER_HEAD

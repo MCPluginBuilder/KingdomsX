@@ -55,20 +55,20 @@ options:
       condition: installed && updated
       lore: |
         {$p}Naprakész
-        &4Jobb-klikk az eltávolításhoz.
+        &4Jobb-kattintás az eltávolításhoz.
     outdated:
       condition: installed
       lore: |
-        &eElavult. Bal-klikk a frissítéshez.
+        &eElavult. Bal-kattintás a frissítéshez.
         &8(&4!&8) &eA frissítés felülír minden
         frissítésre szoruló fájlt. Csak a lent
         látható fájlok lesznek újra letöltve.
-        &4Jobb-klikk az eltávolításhoz.
-        {$sp}Középső-klikk a frissített fájlok 
+        &4Jobb-kattintás az eltávolításhoz.
+        {$sp}Középső-kattintás a frissített fájlok 
         teljes listájának megtekintéséhez.
 
         &cÖsszefoglaló a frissített fájlokról{$colon}
     not-installed:
       lore: |
         &4Nincs telepítve
-        Bal-klikk a letöltéshez
+        Bal-kattintás a letöltéshez

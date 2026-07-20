@@ -58,8 +58,8 @@ options:
 
         &4Telepített verzió{$colon} {$sp}%installed-version%
         {$p}Legfrisebb verzió{$colon} {$sp}%latest-version%
-        {$p}Bal-klikk a frissítéshez
-        &4Jobb-klikk az eltávolításhoz
+        {$p}Bal-kattintás a frissítéshez
+        &4Jobb-kattintás az eltávolításhoz
       material: RED_WOOL
     outdated-and-outdated-core-version:
       condition: 'installed && max_outdated_core_version'
@@ -74,8 +74,8 @@ options:
         frissítés szükséges{$colon} {$p}v%max_supported-core-version%
         Aktuális verzió{$colon} {$e}%current-core-version%
 
-        {$p}Bal-klikk a frissítéshez
-        &4Jobb-klikk az eltávolításhoz
+        {$p}Bal-kattintás a frissítéshez
+        &4Jobb-kattintás az eltávolításhoz
       material: YELLOW_WOOL
     up-to-date:
       condition: 'installed && !outdated'
@@ -83,7 +83,7 @@ options:
       lore: |
         %description%
         {$p}Verzió{$colon} {$sp}%installed-version%
-        &4Jobb-klikk az eltávolításhoz
+        &4Jobb-kattintás az eltávolításhoz
       material: GREEN_WOOL
     outdated:
       condition: 'installed && outdated'
@@ -92,8 +92,8 @@ options:
         %description%
         &4Telepített verzió{$colon} {$sp}%installed-version%
         {$p}Legfrisebb verzió{$colon} {$sp}%latest-version%
-        {$p}Bal-klikk a frissítéshez
-        &4Jobb-klikk az eltávolításhoz
+        {$p}Bal-kattintás a frissítéshez
+        &4Jobb-kattintás az eltávolításhoz
       material: ORANGE_WOOL
     not-installed-outdated-core-version:
       condition: '!installed && outdated_core_version'
@@ -112,6 +112,6 @@ options:
       lore: |
         %description%
         {$p}Verzió{$colon} {$sp}%latest-version%
-        {$p}Bal-klikk a telepítéshez
+        {$p}Bal-kattintás a telepítéshez
       condition: '!installed'
       material: GRAY_WOOL

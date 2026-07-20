@@ -7,10 +7,10 @@ options:
     name: "{$p}%player_selector_name%"
     material: BOOK
     lore: |
-      {$p}Bal-klikk{$colon} {$desc}Aktuális hozzáférési bejegyzés módosítása.
+      {$p}Bal-kattintás{$colon} {$desc}Aktuális hozzáférési bejegyzés módosítása.
       {$p}Eldob {$sep}(&5Q{$sep}){$colon} {$desc}Hozzáférési bejegyzés végleges eltávolítása.
-      {$p}Shift Bal-klikk{$colon} {$p}+1{$desc}-el növeli a hozzáférési bejegyzés prioritását.
-      {$p}Shift Jobb-klikk{$colon} {$e}-1{$desc}-el csökkenti a hozzáférési bejegyzés prioritását.
+      {$p}Shift Bal-kattintás{$colon} {$p}+1{$desc}-el növeli a hozzáférési bejegyzés prioritását.
+      {$p}Shift Jobb-kattintás{$colon} {$e}-1{$desc}-el csökkenti a hozzáférési bejegyzés prioritását.
 
       %player_selector_info%
     slots: [ 10, 11, 12, 13, 14, 15, 16 ]
@@ -18,8 +18,8 @@ options:
     name: '&cVissza &7| &cMEgszakítás'
     material: BARRIER
     lore: |
-      {$p}Bal-klikk{$colon} {$s}Mentés és vissza
-      {$e}Jobb-klikk{$colon} {$es}Elvetés és vissza
+      {$p}Bal-kattintás{$colon} {$s}Mentés és vissza
+      {$e}Jobb-kattintás{$colon} {$es}Elvetés és vissza
     posx: 1
     posy: 1
   add:

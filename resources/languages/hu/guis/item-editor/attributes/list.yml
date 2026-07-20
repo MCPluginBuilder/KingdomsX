@@ -33,5 +33,5 @@ options:
       {$p}Művelet{$colon} {$s}%attribute_operation%
       {$p}Felszerelés helye{$colon} {$s}%attribute_equipment_slot%
       
-      {$sp}Bal-klikk a módosításhoz
-      {$sp}Jobb-klikk az eltávolításhoz
+      {$sp}Bal-kattintás a módosításhoz
+      {$sp}Jobb-kattintás az eltávolításhoz

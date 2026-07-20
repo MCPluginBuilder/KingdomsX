@@ -35,5 +35,5 @@ options:
     material: COMMAND_BLOCK
     name: '%command%'
     lore: |
-      {$p}Bal-klikk a szerkesztéhez
-      {$s}Jobb-klikk az eltávolításhoz
+      {$p}Bal-kattintás a szerkesztéhez
+      {$s}Jobb-kattintás az eltávolításhoz

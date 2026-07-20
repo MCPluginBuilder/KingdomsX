@@ -22,7 +22,7 @@ sound: BLOCK_ENCHANTMENT_TABLE_USE
         - <lore>
         - ""
         - &lvl "{$p}Szint{$colon} {$s}%level%{$sep}/{$s}%max_level%"
-        - "{$sep}[{$e}!{$sep}] {$es}Jobb-klikk az engedélyezéshez"
+        - "{$sep}[{$e}!{$sep}] {$es}Jobb-kattintás az engedélyezéshez"
     maxxed:
       condition: 'enabled && maxxed'
       name: "{$enabled} <name>"
@@ -30,7 +30,7 @@ sound: BLOCK_ENCHANTMENT_TABLE_USE
         - <lore>
         - ""
         - &lvl-maxxed "{$p}Szint{$colon} {$s}%level% {$sep}({$s}Maxxed{$sep})"
-        - &disable-upgrade "{$sep}[{$e}!{$sep}] {$es}Jobb-klikk a letíltásához"
+        - &disable-upgrade "{$sep}[{$e}!{$sep}] {$es}Jobb-kattintás a letiltásához"
     else:
       condition: enabled
       name: "{$enabled} <name>"
@@ -68,8 +68,8 @@ options:
       <lore>: |
         {$p}Szint 1{$colon} {$desc}A területeden a nem játékos szörnyek
                   megölése szintenként {$p}5{$desc}-tel több tapasztalatot ér.
-        {$p}Szint 2{$colon} {$desc}A területeden a Zombik és csontvázak
-                  megőlése {$p}x2 {$desc}tapasztalatot ér.
+        {$p}Szint 2{$colon} {$desc}A területeden a zombik és csontvázak
+                  megölése {$p}x2 {$desc}tapasztalatot ér.
         {$p}Szint 3{$colon} {$desc}A területeden az ellenséges játékosok
                   megölése {$p}x1.5 {$desc}tapasztalatot ér.
 

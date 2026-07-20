@@ -16,12 +16,12 @@ rows: 6
       name: "{$enabled} <x>{$colon} {$s}%roman@level% {$sep}({$s}%level%{$sep})"
       glow: true
       lore: |
-        {$sep}Bal-klikk a szint váloztatásához
-        {$sep}Jobb-klikk az eltávolításhoz
+        {$sep}Bal-kattintás a szint váloztatásához
+        {$sep}Jobb-kattintás az eltávolításhoz
     else:
       name: "{$disabled} <x>"
       lore: |
-        {$sep}Bal-klikk a bűbáj hozzáadásához
+        {$sep}Bal-kattintás a bűbáj hozzáadásához
 
 options:
   enchant-water-worker:

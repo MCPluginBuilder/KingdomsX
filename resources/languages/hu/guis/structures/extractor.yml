@@ -32,10 +32,11 @@ options:
       üzemanyagtárgyat a fúró
       blokkjára.
       
-      {$sep}Ezenkívül elhelyezhetsz egy
-      {$p}tölcsért {$sep}is a fúrón.
-      {$note} Ez csak akkor működik, ha a fúró
-      üzemanyaga teljesen kifogyott.
+      {$sep}Ezenkívül elhelyezhetsz egy {$p}tölcsért {$sep}
+      is a fúrón.
+      {$note} Ez csak akkor működik,
+      ha a fúró üzemanyaga teljesen
+      kifogyott.
       
       {$sep}A következő tárgyakkal lehet tölteni{$colon}
       

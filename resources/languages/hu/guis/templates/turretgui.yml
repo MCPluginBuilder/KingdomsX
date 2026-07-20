@@ -18,8 +18,10 @@ options:
     fill-cost: 'neededAmmo / 8'
     lore: |
       {$p}Vásárolj {$s}%ammo-buy-amount% {$p}lőszert {$s}%cost% {$p}Nexus pontért.
-      {$p}Teljesen feltölteni a {$s}shift clicking
-      {$p}használatával lehet {$s}%fill-cost% {$p}Nexus pontért.
+      Teljesen feltölteni {$s}Shift+kattintással {$p}lehet
+      {$s}%fill-cost% {$p}Nexus pontért.
+    #{$s}Shift+kattintással {$p}teljesen feltölthető
+    #{$s}%fill-cost% {$p}Nexus pontért.
     posx: 2
     posy: 2
   upgrade:
@@ -62,10 +64,10 @@ options:
         aktiválódását, helyette átveheted 
         felettük az irányítást.
 
-        {$p}Bal-klikkel belépés az
+        {$p}Bal-kattintással belépés az
         {$sp}automatikus módba.
 
-        {$p}Jobb-klikkel kezdődhet
+        {$p}Jobb-kattintással kezdődhet
         a torony működtetése.
     automatic:
       name: "{$sp}Automatikus"
@@ -75,7 +77,7 @@ options:
         automatikusan észlelik a közeli
         ellenségeket és lőnek rájuk.
 
-        {$p}Bal-klikkel belépés a
+        {$p}Bal-kattintással belépés a
         {$sp}kézi módba
     posx: 4
     posy: 2

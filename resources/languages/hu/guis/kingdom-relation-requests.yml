@@ -13,7 +13,7 @@ options:
         {$p}Királyságból{$colon} {$sp}%kingdoms_kingdom_name%
         {$p}Küldve{$colon} {$s}%timestamp%
         {$p}Kapcsolati kérelem{$colon} %relation-color%%relation-name%
-        &cKlikk a törléshez
+        &cKattintás a törléshez
     else:
       name: "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] {$p}%player%"
       lore: |
@@ -23,8 +23,8 @@ options:
         {$p}Küldve{$colon} {$s}%timestamp%
         {$p}Eltelt idő{$colon} {$s}%time-passed%
 
-        {$p}&lBal-klikk az elfogadáshoz
-        &c&lJobb-klikk az elutasításhoz
+        {$p}&lBal-kattintás az elfogadáshoz
+        &c&lJobb-kattintás az elutasításhoz
     slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20 ]
   decline-all:
     name: "&cÖsszes elutasítása"

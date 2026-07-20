@@ -51,9 +51,9 @@ options:
     posx: 6
     posy: 2
     lore: |
-      {$sep}Királyság beállításaival és más
-      királyságokkal való viszonyonyával
-      kapcsolatos engedélyek.
+      {$sep}A királyság beállításaival és
+      más királyságokkal való viszonyával
+      kapcsolatos jogosultságok.
 
       {$dot} {$s}/k ally {$sep}| {$s}enemy {$sep}| {$s}truce {$sep}| {$s}revoke
       {$dot} {$s}/k broadcast

@@ -20,7 +20,7 @@ options:
     material: BLACK_BANNER
     name: '{$p}Zászlók'
     lore: |
-      {$sep}Klikk a módosításhoz
+      {$sep}Kattintás a módosításhoz
       {$dot} {$p}Rejtett attribútumok{$colon} %item_flag_hide_attributes%
       {$dot} {$p}Rejtett megsemmisítések{$colon} %item_flag_hide_destroys%
       {$dot} {$p}Rejtett festések{$colon} %item_flag_hide_dye%
@@ -47,7 +47,7 @@ options:
     posy: 2
     material: ENCHANTED_BOOK
     name: '{$p}Büvőlések'
-    lore: [ "{$sep}Klikk a módosításhoz" ] # The lore is modified by the plugin to add set enchants
+    lore: [ "{$sep}Kattintás a módosításhoz" ] # The lore is modified by the plugin to add set enchants
   unbreakable:
     isUnbreakable:
       condition: item_unbreakable

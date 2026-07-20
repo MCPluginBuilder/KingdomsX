@@ -14,8 +14,8 @@ sound: BLOCK_ANVIL_USE
 base: &base
   name: "&5%item_name%"
   lore: |
-    {$p}{? !buy_allowed ? "&m"}Vásárlás{$colon} {$s}%fancy@buy% {$sep}({$sp}Bal-klikk{$sep}){? buy_max_items != -1 ? " {$sep}({$sp}Max{$colon} &5%buy_max_items%{$sep})" }
-    {$p}Eladás{$colon} {$s}%fancy@sell% {$sep}({$sp}Jobb-klikk{$sep})
+    {$p}{? !buy_allowed ? "&m"}Vásárlás{$colon} {$s}%fancy@buy% {$sep}({$sp}Bal-kattintás{$sep}){? buy_max_items != -1 ? " {$sep}({$sp}Max{$colon} &5%buy_max_items%{$sep})" }
+    {$p}Eladás{$colon} {$s}%fancy@sell% {$sep}({$sp}Jobb-kattintás{$sep})
     {? !buy_allowed ? "
     {$e}Még ennyi ideig nem tudod
     {$e}megvenni{$colon} {$es}%time@buy_cooldown%"}
@@ -34,7 +34,7 @@ options:
       árak emelkednek, és minél többen adják
       el, a vételár csökken.
 
-      {$note} {$p}Shift Bal-klikk {$sep}lenyomásával
+      {$note} {$p}Shift Bal-kattintás {$sep}lenyomásával
       újra megveheted ugyanazt a mennyiséget,
       mint előzőleg vásároltál.
 

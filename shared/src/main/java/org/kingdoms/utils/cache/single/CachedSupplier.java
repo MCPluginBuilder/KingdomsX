@@ -7,7 +7,7 @@ public class CachedSupplier<T> extends CachedObject<T> {
     protected final Supplier<T> supplier;
 
     /**
-     * This is intended for very micro-optimizaiton purposes where the checks of {@link #of(Supplier)}
+     * This is intended for very micro-optimization purposes where the checks of {@link #of(Supplier)}
      * are known be useless.
      */
     public CachedSupplier(Supplier<T> supplier) {

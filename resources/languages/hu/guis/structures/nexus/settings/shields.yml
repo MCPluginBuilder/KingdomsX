@@ -4,7 +4,7 @@ sound: ITEM_BOOK_PAGE_TURN
 
 options:
   shield-6hr:
-    name: "{$p}6 Hours Shield"
+    name: "{$p}6 órás pajzs"
     lore: "{$s}Költség{$colon} {$p}%cost%"
     material: SHIELD
     cost: 1000

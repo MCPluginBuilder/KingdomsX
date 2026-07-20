@@ -25,10 +25,10 @@ options:
       {$sep}Az a hely, ahol jutalmakat dobnak
       és a tűzijátékok teremnek.
 
-      {$p}Bal-klikk az aktuális
+      {$p}Bal-kattintás az aktuális
       helyedre való beállításhoz.
 
-      {$sp}Jobb-klikk teleportálás a
+      {$sp}Jobb-kattintás teleportálás a
       beállított helyre.
   spawn:
     posx: 6
@@ -40,10 +40,10 @@ options:
       {$sep}Ahova a játékosok teleportálnak
       amikor csatlakoznak az eseményhez.
       
-      {$p}Bal-klikk az aktuális
+      {$p}Bal-kattintás az aktuális
       helyedre való beállításhoz.
       
-      {$sp}Jobb-klikk teleportálás a
+      {$sp}Jobb-kattintás teleportálás a
       beállított helyre.
   bossbar:
     posx: 7

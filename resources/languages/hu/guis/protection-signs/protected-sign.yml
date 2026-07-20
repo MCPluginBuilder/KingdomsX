@@ -24,7 +24,7 @@ options:
       attól még nem tudja megváltoztatni a tábla
       beállításait vagy kiütni a táblát vagy a blokkot.
 
-      {$sep}Klikk ide a blokk jelszavának beállításához.
+      {$sep}Kattintás ide a blokk jelszavának beállításához.
       Ez csak akkor működik, ha a blokk amit védetté
       teszünk egy konténer, mint pl. a láda.
     material: NETHER_STAR

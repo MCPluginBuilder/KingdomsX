@@ -18,9 +18,9 @@ options:
     lore: |
       {$desc}Változtatás, hogy kire vonatkozon ez a szabály.
       
-      {$p}Bal-klikk{$colon} {$desc}Aktuális játékosválasztó
+      {$p}Bal-kattintás{$colon} {$desc}Aktuális játékosválasztó
                     beállításainak megváltoztatása.
-      {$p}Jobb-klikk{$colon} {$desc}Aktuális játékosválasztó
+      {$p}Jobb-kattintás{$colon} {$desc}Aktuális játékosválasztó
                     ceréje.
       
       %access_entry_player_selector%

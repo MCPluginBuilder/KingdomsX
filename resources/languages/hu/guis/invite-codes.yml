@@ -13,9 +13,9 @@ options:
       {$p}Létrehozva{$colon} {$s}%invitecode-createdAt%
       {$p}Lejárat{$colon} {$s}%invitecode-expiration%
 
-      {$p}Bal-klikk a papírkód megvásárlásához.
-      {$sp}Közéspő-klikk a kód beváltásához.
-      {$e}Jobb-klikk a törléshez.
+      {$p}Bal-kattintás a papírkód megvásárlásához.
+      {$sp}Közéspő-kattintás a kód beváltásához.
+      {$e}Jobb-kattintás a törléshez.
     slots: [ 10, 11, 12, 13, 14, 15, 16 ]
   info:
     name: "&eInformáció"
@@ -32,7 +32,7 @@ options:
       a játékosok vagy beírják ezt a kódot a 
       {$p}/k invitecode {$s}<code> {$sep}parancs 
       használatával, vagy létrehozhatsz egy papírt, 
-      amit a játékosok jobb-klikkel használhatnak 
+      amit a játékosok jobb-kattintással használhatnak 
       fel. Minden egyes meghívókód-papír {$s}%invitecode-papír-költség%
       {$sep}Nexus pontba kerül.
 

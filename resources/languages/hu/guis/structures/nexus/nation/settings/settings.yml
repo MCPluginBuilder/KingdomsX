@@ -18,7 +18,7 @@ options:
     posx: 3
     posy: 5
     material: DARK_OAK_DOOR
-    name: "{$s}Nyilvános otthon{$colon} %bool@kingdoms_nation_home_is_public%"
+    name: "{$s}Nyilvános otthon{$colon} %kingdoms_bool_nation_home_is_public%"
     lore: |
       {$sep}Amikor nyilvános az otthonod,
       bárki odateleportálhat használva
@@ -71,7 +71,7 @@ options:
     name: '{$s}Zászló'
     lore: |
       {$sep}Állítsd be a nemzeted zászlóját az
-      online térképekhez. Klikk a zászló
+      online térképekhez. Kattintás a zászló
       URL-jének megtekintéséhez.
       Ez nem frissíti azonnal a térképet.
   color:
